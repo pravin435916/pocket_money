@@ -24,7 +24,8 @@ export default function Navbar() {
         <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/whyus' >Whyus</Link>
         <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/Reviews'>Reviews</Link>
         <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/Faqs'>FAQs</Link>
-        <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/contactus'>Contact us</Link>
+        <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/contactus'>Register</Link>
+        <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/Login'>Login</Link>
         </ul>
         }
         <button className='p-2 h-max rounded-md bg-[#db2777]  hover:bg-pink-500 sm:hidden'>GET STARTED</button>

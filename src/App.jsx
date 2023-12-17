@@ -9,6 +9,7 @@ import Faqs from "./components/Faqs";
 import Contact from "./components/Contact";
 import Error404 from "./components/Error404";
 import Footer from "./components/Footer";
+import Login from "./components/Login";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/Reviews" element={<Reviews />} />
           <Route path="/Faqs" element={<Faqs />} />
           <Route path="/contactus" element={<Contact />} />
+          <Route path="/Login" element={<Login />} />
           <Route element={<Error404 />} />
         </Routes>
         <Footer/>

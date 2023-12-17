@@ -1,34 +1,27 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-function Contact() {
+function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleRegister = async (e) => {
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
-      console.log('User registered successfully.');
-      alert("User registered successfully.");
+      await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      console.log('User Login successfully.');
+      alert("Login Successfully");
       e.preventDefault();
-      navigate("/Login");
+      navigate("/");
     } catch (error) {
       console.error('Registration failed.',error);
+      alert("Login failed");
     }
   };
 
   return (
-    <div className='w-full h-screen flex flex-col justify-center items-center text-center bg-[#1A1D3E]'>
-    <div className="container w-full max-w-md flex flex-col justify-center">
-    <h1 className="text-3xl font-bold mb-4 text-white">Registration Page</h1>
-    <input
-      type="text"
-      placeholder="Username"
-      className="w-full  p-2 mb-2 border border-gray-300 rounded"
-      onChange={(e) => setUsername(e.target.value)}
-      required
-    />
+    <div className='w-full h-screen flex flex-col justify-center items-start bg-[#1A1D3E]'>
+    <div className="container pt-36 max-w-md text-center ">
+    <h1 className="text-3xl font-bold mb-4 text-white">Login Page</h1>
     <input
       type="email"
       placeholder="Email"
@@ -47,11 +40,11 @@ function Contact() {
       className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
       onClick={handleRegister}
     >
-      Register
+      Login
     </button>
   </div>
   </div>
   );
 }
 
-export default Contact;
+export default Login;
