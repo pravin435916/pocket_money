@@ -5,9 +5,20 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
   const mobile = window.innerWidth<=768 ? true : false;
   const [menu,setMenu] = useState(false);
-
+  const [token,setToken] = useState(localStorage.getItem("token"));
+  const [loggedIn,setLoggedIn] = useState(false);
+  
   const handleclick = () => {
        setMenu(!menu);
+  }
+  const logout = () => {
+    setToken("");
+    localStorage.removeItem("token")
+    setLoggedIn(false)
+  }
+  const login = () => {
+    setLoggedIn(true);
+    setMenu(false);
   }
   return (
     <>
@@ -25,7 +36,11 @@ export default function Navbar() {
         <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/Reviews'>Reviews</Link>
         <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/Faqs'>FAQs</Link>
         <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/contactus'>Register</Link>
-        <Link onClick={()=> setMenu(false)} className='text-white no-underline' to='/Login'>Login</Link>
+        {loggedIn ?  (
+          <Link onClick={logout} className='text-white no-underline' to='/'>Logout</Link>
+        ) : (
+          <Link onClick={login} className='text-white no-underline' to='/Login'>Login</Link>
+        )}
         </ul>
         }
         <button className='p-2 h-max rounded-md bg-[#db2777]  hover:bg-pink-500 sm:hidden'>GET STARTED</button>

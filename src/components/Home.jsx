@@ -5,11 +5,33 @@ import Whyus from "./Whyus";
 import Plans from "./Plans";
 import Reviews from "./Reviews";
 import Faqs from "./Faqs";
+import { useState,useEffect } from "react";
 export default function Home() {
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    const UserData = async () => {
+      try {
+        // Make a request to the backend to fetch user data
+        const response = await axios.get('http://localhost:5000/api/auth/user');
+        const user = response.data;
+        setUserData(user);
+      } catch (error) {
+        console.error('Error fetching user data', error);
+      }
+  };
+    UserData();
+  }, []); 
   return (
     <>
       <div className="font-Sometype pt-5 Monox w-full h-screen flex justify-center items-center overflow-hidden text-white bg-[#1A1D3E]  sm:flex-col sm:gap-5">
         <div className="flex flex-col justify-center text-start text-7xl font-bold-700 sm:text-5xl sm:text-center">
+        <div>
+      {userData ? (
+        <p className="text-sm">Welcome, {userData.email}!</p>
+      ) : (
+        <p className="text-lg">Hello</p>
+      )}
+    </div>
           <span>Trusted and Secure</span>
           <span className="text-[#db2777] font-bold">Investment </span>
           <span> Platform</span>

@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import Error404 from "./components/Error404";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
+import Users from "./components/Users";
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Faqs" element={<Faqs />} />
           <Route path="/contactus" element={<Contact />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/users" element={<Users />} />
           <Route element={<Error404 />} />
         </Routes>
         <Footer/>
